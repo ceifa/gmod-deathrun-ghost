@@ -46,7 +46,6 @@ if SERVER then
     end
 
     hook.Add("OnRoundSet", "RemoveAllGhosts", function()
-        print("Setttt")
         for _, v in pairs(player.GetAll()) do
             if v:IsGhost() then
                 SetGhost(v, false)
