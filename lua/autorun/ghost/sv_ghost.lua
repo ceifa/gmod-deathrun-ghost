@@ -2,16 +2,19 @@ if SERVER then
     local TEAM_GHOST = 5
     local GHOST_COMMAND = "ghost"
 
+    game.ConsoleCommand("mp_show_voice_icons 0")
+
     hook.Add("PlayerSay", "PlayerRequestGhostCheck", function(ply, text)
         text = string.lower(text)
 
-        if text == "!"..GHOST_COMMAND or text == "/"..GHOST_COMMAND then
+        if text == "!" .. GHOST_COMMAND or text == "/" .. GHOST_COMMAND then
             if not ply:Alive() and ROUND:GetCurrent() == 5 then
                 SetGhost(ply, true)
             elseif ply:IsGhost() then
                 SetGhost(ply, false)
             else
                 ply:ChatPrint("Você não pode fazer isso agora.")
+
                 return
             end
         end

@@ -28,7 +28,9 @@ if SERVER then
 	end)
 
 	hook.Add("GetFallDamage", "RemoveFallDamageSound", function( ply, speed )
-		return not (ply:IsPlayer() and ply:IsGhost())
+		if ply:IsPlayer() and ply:IsGhost() then
+			return false
+		end
 	end)
 end
 
